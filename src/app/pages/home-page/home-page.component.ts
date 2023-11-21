@@ -10,6 +10,9 @@ import { ApiService } from '../../api.service';
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
+  [x: string]: any;
+  inputAdd!: string;
+  items: any;
   constructor(private api:ApiService){  }
   todos:any='';
   ngOnInit(){
@@ -17,5 +20,7 @@ export class HomePageComponent {
       this.todos=data
     })
     }
-
+    delete(id:any){
+      this.todos = this.todos.filter((e : {id:any})=> e.id != id)
+    }
 }
